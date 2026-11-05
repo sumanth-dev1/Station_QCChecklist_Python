@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic QA Form</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- 3rd‑party libraries (all local) -->
+  <script src="libs/jquery-3.6.0.min.js"></script>
+  <script src="libs/zxing-browser.min.js"></script>
+  <script src="libs/jspdf.umd.min.js"></script>
+  <script src="libs/jspdf.plugin.autotable.min.js"></script>
+  <script src="libs/xlsx.full.min.js"></script>
+  <script src="libs/pdf.min.js"></script>
+
+  <!-- your application logic -->
+  <script src="script.js" defer></script>
+  <style>
+    footer {
+      position: fixed;
+      bottom: 5px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    footer .action-buttons button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    footer .action-buttons button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Logo and Logout -->
+  <div class="logo-container">
+
+
+    <img src="hbl_logo.jpg" alt="Logo" class="logo">
+  </div>
+  <div class="acto-buttons">
+    <i class="fas fa-sign-out-alt"></i> Logout
+    <button class="logout-button" type="button" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="sidebar">
+    <button class="button" onclick="showSection('0.0')" id="station-info-button">📋 Station Info</button>
+
+    <!-- Section 1 -->
+    <button class="button" onclick="showSection('2.0')" id="button-2" disabled>1.0 Serial Number verification</button>
+
+    <!-- Section 2 -->
+    <button class="button" onclick="showSection('3.0')" id="button-3" disabled>2.0 Building</button>
+
+    <!-- Section 3 -->
+    <button class="button" onclick="showSection('4.0')" id="button-4" disabled>3.0 Tower</button>
+
+    <!-- Section 4: RF Antennas (with subsections) -->
+    <div class="section-group">
+      <button class="button section-toggle" onclick="toggleSubsections(this)" id="button-5" disabled>▶ 4.0 Power
+        Supply</button>
+      <div class="subsections" style="display: none;">
+        <button class="subsection-button" id="button-4.1" onclick="showSection('5.0', '4.1')">├─ 4.1 PDU (Power Distribution Unit):</button>
+        <button class="subsection-button" id="button-4.2" onclick="showSection('5.0', '4.2')">└─ 4.2 DC-DC Converter:</button>
+      </div>
+    </div>
+
+    <!-- Section 5: Installation of Kavach Equipment (with subsections) -->
+    <div class="section-group">
+      <button class="button section-toggle" onclick="toggleSubsections(this)" id="button-6" disabled>▶ 5.0 Kavach
+        Equipment</button>
+      <div class="subsections" style="display: none;">
+        <button class="subsection-button" id="button-5.1" onclick="showSection('6.0', '5.1')">├─ 5.1 Kavach
+          Unit</button>
+        <button class="subsection-button" id="button-5.2" onclick="showSection('6.0', '5.2')">├─ 5.2 SMOCIP</button>
+        <button class="subsection-button" id="button-5.3" onclick="showSection('6.0', '5.3')">├─ 5.3 GPS/GSM
+          antenna</button>
+        <button class="subsection-button" id="button-5.4" onclick="showSection('6.0', '5.4')">├─ 5.4 RIU</button>
+        <button class="subsection-button" id="button-5.5" onclick="showSection('6.0', '5.5')">└─ 5.5 EI Protocol Converter</button>
+      </div>
+    </div>
+
+    <!-- Section 6 -->
+    <button class="button" onclick="showSection('7.0')" id="button-7" disabled>6.0 RF Communication equipment on tower</button>
+
+    <!-- Section 7 -->
+    <button class="button" onclick="showSection('8.0')" id="button-8" disabled>7.0 OFC Networking rack</button>
+
+    <!-- Section 8 -->
+    <button class="button" onclick="showSection('9.0')" id="button-9" disabled>8.0 Relay rack</button>
+
+    <!-- Section 9 -->
+    <button class="button" onclick="showSection('10.0')" id="button-10" disabled>9.0 Earthing</button>
+
+    <!-- Section 10 -->
+    <button class="button" onclick="showSection('11.0')" id="button-11" disabled>10.0 Indoor wiring / cabling</button>
+
+    <!-- Section 11 -->
+    <button class="button" onclick="showSection('12.0')" id="button-12" disabled>11.0 Outdoor cabling</button>
+
+    <!-- Section 12 -->
+    <button class="button" onclick="showSection('13.0')" id="button-13" disabled>12.0 RFID Tags</button>
+
+    <!-- Section 13 -->
+    <button class="button" onclick="showSection('14.0')" id="button-14" disabled>13.0 Components Inspection</button>
+  </div>
+
+
+  <script>
+    window.addEventListener('load', function () {
+      // Clear all relevant stored data to ensure a fresh page each time.
+
+      // Optionally, clear all of sessionStorage (caution: if you have other data you want to keep)
+      // sessionStorage.clear();
+      // Also clear localStorage if you use it:
+      // localStorage.removeItem("selectedStationId");
+      // localStorage.removeItem("stationDetails");
+
+      // Read the URL hash to determine which section to show (e.g., "#0.0")
+      const hash = window.location.hash;
+      if (hash) {
+        const sectionId = hash.substring(1);  // removes the '#' character
+        if (typeof showSection === 'function') {
+          showSection(sectionId);
+        } else {
+          console.log("showSection function is not defined. Default section:", sectionId);
+        }
+      }
+    });
+  </script>
+
+
+  <!-- Your additional scripts (for handling station info fetching, etc.) -->
+  <!--
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function checkingValues(){
+    const stationInfo=JSON.parse(sessionStorage.getItem("stationInfo"));
+    if(!stationInfo){
+      console.log("Not Working");
+    }else{
+      if(document.getElementById("station-name").value===""){
+        console.log("Whast Happening");
+      }
+    }
+  }
+   checkingValues();
+    });
+</script>-->
+  <script>
+    window.addEventListener('load', function () {
+      // Only clear fields if no station info exists in sessionStorage
+      const stationInfo = sessionStorage.getItem("stationInfo");
+
+      if (!stationInfo) {
+        // Clear form fields explicitly only if no station info exists
+        const fieldIds = ["station-id", "station-name", "zone", "division", "section-name", "initial-date", "updated-date"];
+        fieldIds.forEach(id => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.value = "";
+          }
+        });
+      }
+
+      // Check the URL hash to show the default section if present.
+      const hash = window.location.hash; // e.g., "#0.0"
+      if (hash) {
+        const sectionId = hash.substring(1);  // removes the '#' character
+        if (typeof showSection === 'function') {
+          showSection(sectionId);
+        } else {
+          console.log("showSection function is not defined. Default section:", sectionId);
+        }
+      }
+    });
+
+  </script>
+
+
+
+
+
+  <!-- Success Modal -->
+  <div id="success-modal"
+    style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; background-color: #4CAF50; color: white; border-radius: 5px;">
+    Data saved successfully!
+  </div>
+  <!-- Main Content Section -->
+  <div class="main-content">
+    <div id="main-content">
+      <div id="dynamic-content">
+        <p>Select a section from the left to view details.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Image Section (optional, not modified here) -->
+  <div id="add-image-section" style="display: none;">
+    <!-- Code for image capture / upload -->
+    <!-- ... -->
+  </div>
+
+  <!-- Footer with Generate Report button -->
+  <footer>
+    <div class="action-buttons">
+      <button type="button" onclick="confirmGenerateReport()">Generate Report</button>
+    </div>
+  </footer>
+
+
+  <script>
+
+    function confirmGenerateReport() {
+      const userConfirmed = confirm("Do you want to generate the report?");
+      if (userConfirmed) {
+        generateReport(); // Call your actual function
+      }
+    }
+
+    function beforeUnloadHandler(event) {
+      event.returnValue = "Please generate report before closing.";
+      return event.returnValue;
+    }
+    window.addEventListener("beforeunload", beforeUnloadHandler);
+
+
+
+  </script>
+
+  <!-- Additional scripts (for station info handling, etc.) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const stationId = urlParams.get("station_id");
+      if (stationId) {
+        localStorage.setItem("selectedStationId", stationId);
+        fetch(`getReportById?station_id=${stationId}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              const stationInfo = data.data.stationDetails;
+              if (stationInfo) {
+                localStorage.setItem("stationDetails", JSON.stringify(stationInfo));
+
+                const stationIdElem = document.getElementById("station-id");
+                if (stationIdElem) stationIdElem.value = stationInfo.stationID || "";
+
+                const stationNameElem = document.getElementById("station-name");
+                if (stationNameElem) stationNameElem.value = stationInfo.stationName || "";
+
+                const zoneElem = document.getElementById("zone");
+                if (zoneElem) zoneElem.value = stationInfo.zone || "";
+
+                const divisionElem = document.getElementById("division");
+                if (divisionElem) divisionElem.value = stationInfo.division || "";
+
+                const sectionNameElem = document.getElementById("section-name");
+                if (sectionNameElem) sectionNameElem.value = stationInfo.sectionName || "";
+
+                const initialDateElem = document.getElementById("initial-date");
+                if (initialDateElem) initialDateElem.value = stationInfo.initialDate || "";
+
+                const updateDateElem = document.getElementById("updated-date");
+                if (updateDateElem) updateDateElem.value = stationInfo.updateDate || "";
+              }
+            }
+
+            else {
+              console.error("Error Fetching report Details:", data.message);
+            }
+          })
+          .catch(error => console.error("Fetch error:", error));
+      }
+    });
+  </script>
+
+  <div id="messageBox" style="color: green; font-weight: bold; margin-top: 10px;"></div>
+
+</body>
+
+</html>

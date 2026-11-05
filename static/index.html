@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Audit Report</title>
+  <style>
+    /* General Body Style */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(to right, #f9f9fb, #eceff1);
+    }
+
+    /* Background image section */
+    .background {
+      background-image: url('audit.jpg');
+      /* Adjust path */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      width: 65%;
+      /* Increased width */
+      position: relative;
+    }
+
+    /* Dark overlay */
+    .background::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    /* Content Section */
+    .content {
+      width: 35%;
+      /* Reduced width */
+      padding: 50px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      color: #3f51b5;
+      /* Indigo */
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    /* Buttons */
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      align-items: center;
+      /* center buttons horizontally */
+    }
+
+    button {
+      padding: 18px;
+      background: linear-gradient(90deg, #3f51b5, #5c6bc0);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      width: 260px;
+      /* fixed smaller width */
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(63, 81, 181, 0.4);
+    }
+
+    /* Logout Button */
+    .acto-buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .logout-button {
+      background: #e53935;
+      padding: 10px 1px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .logout-button:hover {
+      background: #c62828;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-flex-container {
+      background: #fff;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1200px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .modal-flex-container h2 {
+      color: #3f51b5;
+    }
+
+    .pdf-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 12px;
+      margin-bottom: 8px;
+      background: #009688;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .pdf-option:hover {
+      background: #00796b;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .background {
+        width: 100%;
+        height: 40%;
+      }
+
+      .content {
+        width: 100%;
+        height: 60%;
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 15px;
+        width: 180px;
+        /* smaller buttons on mobile */
+      }
+
+      .logout-button {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Logout Button -->
+  <header>
+    <div class="acto-buttons">
+      <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Background -->
+  <div class="background"></div>
+
+  <!-- Content -->
+  <div class="content">
+    <h1>QA Audit Report</h1>
+    <p><strong>Stationary kavach</strong></p>
+    <p>Select an option to proceed:</p>
+    <div class="container">
+      <button onclick="createNewReport()">Create Report</button>
+      <button onclick="viewReport()">View/Edit Report</button>
+      <button onclick="showManualModal()">Manuals</button>
+    </div>
+  </div>
+  <!-- Modal for Manuals -->
+  <div id="manualModal" class="modal" style="display: none;">
+    <div class="modal-flex-container">
+      <div class="column">
+        <h2>Installation Manuals</h2>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/2.1_Precommissioning%20Checklist%20for%20KAVACH%20Building%20Works.pdf')">
+          2.1 Precommissioning Checklist for KAVACH Building Works
+        </button>
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/3.1_Precommissioning%20Checklist%20for%20Tower%20Works.pdf')">
+          3.1 Precommissioning Checklist for Tower Works
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/4.1.1_516760053_IPS_PDU_Installation_Drawing%20-%20signed.pdf')">
+          4.1.1 516760053 IPS PDU Installation Drawing - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/4.1.2_516760054_Station_PDU_Drawing_Installation_Drawing%20-%20signed.pdf')">
+          4.1.2 516760054 Station PDU Drawing Installation Drawing - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/4.1.4_HARNS_ASSY_IP_SOURCE_IPS_PDU_516490671%20-%20signed.pdf')">
+          4.1.4 HARNS ASSY IP SOURCE IPS PDU 516490671 - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/4.1.8_5%2053%2020%200024_TEST%20PROCEDURE%20FOR%20POWER%20DISTRIBUTION%20UNIT.pdf')">
+          4.1.8 5 53 20 0024 TEST PROCEDURE FOR POWER DISTRIBUTION UNIT
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/4.2.1_516760055_DC_DC_Unit_Converter_Installation_Drawing%20-%20signed.pdf')">
+          4.2.1 516760055 DC DC Unit Converter Installation Drawing - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/5.1.1_516760056_Stationary_Kavach_Installation_Drawing%20-%20signed.pdf')">
+          5.1.1 516760056 Stationary Kavach Installation Drawing - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/5.1.5_516760045_KAVACH_STATIONARY_TERMINATION_PANEL_INSTALLATION_DRAWING%20-%20signed.pdf')">
+          5.1.5 516760045 KAVACH STATIONARY TERMINATION PANEL INSTALLATION DRAWING - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/5.1.6_OFC%20SPLICING_HARNS_FOR_RS232%20%26%20RS485_OFC_CONVERTERS.pdf')">
+          5.1.6 OFC SPLICING HARNS FOR RS232 & RS485 OFC CONVERTERS
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/5.2.1_516760040_KAVACH_SM_OCIP_INSTALLATION_DRAWING%20-%20signed.pdf')">
+          5.2.1 516760040 KAVACH SM OCIP INSTALLATION DRAWING - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/5.2.2_516760046_KAVACH_SM%20OCIP_TERMINATION_PANEL_INSTALLATION_DRAWING%20-%20signed.pdf')">
+          5.2.2 516760046 KAVACH SM OCIP TERMINATION PANEL INSTALLATION DRAWING - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/5.3.1_516670039_KAVACH_GPS_GSM_INSTALLATION_DRAWING%20-%20signed.pdf')">
+          5.3.1 516670039 KAVACH GPS GSM INSTALLATION DRAWING - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/5.4.1_516760057_RIU_Installation_Drawing%20-%20signed.pdf')">
+          5.4.1 516760057 RIU Installation Drawing - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/6.1.1_5_16_67_0983_Installation%20arrangement%20for%2010.2dBi%20omni%20-%20directional%20antennas%20&%20Radio%20Tower%20Unit%20-%20signed.pdf')">
+          6.1.1_5_16_67_0983_Installation arrangement for 10.2dBi omni - directional antennas & Radio Tower Unit -
+          signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/6.1.3_516760043_KAVACH_STATIONARY_TOWER_EARTH_DRAWING%20-%20signed.pdf')">
+          6.1.3 516760043 KAVACH STATIONARY TOWER EARTH DRAWING - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/6.1.10_5%2016%2090%200018_Procedure%20for%20Antenna%20fixing%20%26%20Cable%20Routing%20-%20signed.pdf')">
+          6.1.10 5 16 90 0018 Procedure for Antenna fixing & Cable Routing - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/6.1.10.1_6800043767_RTU_LMR_600_FEEDER_CLAMP_516671229%20-%20signed.pdf')">
+          6.1.10.1 6800043767 RTU LMR 600 FEEDER CLAMP 516671229 - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/7.1_516760058_17U_Net_work_rack_installation_drawing%20-%20signed.pdf')">
+          7.1 516760058 17U Network Rack Installation Drawing - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/8.1_516760059_Relay_Rack_Installation_Drawing%20-%20signed.pdf')">
+          8.1 516760059 Relay Rack Installation Drawing - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/10.1_STATIONARY_KAVACH_CONNECTIVITY_DIAGRAM_516490614%20-%20signed.pdf')">
+          10.1 Stationary Kavach Connectivity Drawing 516490614 V1.5 - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/12.1_RFID%20TAG%20STRAPPING-MANUAL%20INSTALLATION%20PROCEDURE_553760055%20-%20signed.pdf')">
+          12.1 RFID TAG STRAPPING - MANUAL INSTALLATION PROCEDURE - signed
+        </button>
+
+        <button class="pdf-option"
+          onclick="openManual('Manual_Documents/Installation/12.4_Field%20Change%20Note%20for%20RFID%20TAG%20Assemblies%20for%20Turnout%20Tags%20290726%20-%20signed.pdf')">
+          12.4 Field Change Note for RFID TAG Assemblies for Turnout Tags 290726 - signed
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function createNewReport() {
+      const storedUserId = localStorage.getItem("user_id");
+      const storedEmployeeName = localStorage.getItem("employee_name");
+      sessionStorage.clear();
+      localStorage.clear();
+      if (storedUserId) localStorage.setItem("user_id", storedUserId);
+      if (storedEmployeeName) localStorage.setItem("employee_name", storedEmployeeName);
+      window.location.href = 'create.html#0.0';
+    }
+
+    function viewReport() {
+      window.location.href = 'viewReports';
+    }
+
+    function logout() {
+      alert("Logging out...");
+      window.location.href = 'login.html';
+    }
+
+    function showManualModal() {
+      document.getElementById('manualModal').style.display = 'flex';
+    }
+
+    function hideManualModal() {
+      document.getElementById('manualModal').style.display = 'none';
+    }
+    function openManual(pdfPath) {
+      // Open the PDF in a new tab
+      window.open(pdfPath, '_blank');
+    }
+
+    window.onclick = function (event) {
+      const modal = document.getElementById('manualModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+
+</html>

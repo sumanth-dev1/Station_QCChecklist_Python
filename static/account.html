@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #d9e8f6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .create-account-container {
+            background: #fff;
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Form Header */
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        /* Label and Input Fields */
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Submit Button */
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Link Section */
+        .link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .link a:hover {
+            color: #45a049;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="create-account-container">
+        <h2>Create Account</h2>
+        <form action="verify_admin" method="POST">
+            <label for="admin_password">Admin Password</label>
+            <input type="password" id="admin_password" name="admin_password" placeholder="Enter admin password" required>
+
+            <button type="submit">Verify and Create User</button>
+        </form>
+        <div class="link">
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </div>
+</body>
+</html>
+

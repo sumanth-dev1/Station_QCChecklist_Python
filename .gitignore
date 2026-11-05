@@ -1,0 +1,38 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables & secrets
+.env
+.env.local
+
+# Logs
+*.log
+app_errors.log
+server.log
+server_err.log
+
+# Scratch & temporary test scripts
+scratch/
+
+# User uploads and generated inspection reports (prevents leaking inspection data to GitHub)
+uploads/*
+!uploads/.gitkeep
+!uploads/reports/
+uploads/reports/*
+!uploads/reports/.gitkeep
+
+# IDE & Editor files
+.vscode/
+.idea/
+
+# OS specific files
+Thumbs.db
+desktop.ini
+.DS_Store

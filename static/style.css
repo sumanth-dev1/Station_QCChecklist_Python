@@ -1,0 +1,1271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.filled {
+    font-weight: bold;
+    color: #2e8b57; /* Dark green text color for filled sections */
+  }
+  
+  #sidebar-section-1_0 {
+    background-color: #f0f8ff; /* Default light blue background */
+  }
+  
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    /* Background image */
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Additional Styling for the index page */
+body.index {
+    /* Semi-transparent overlay for the background */
+    color: #16a;
+    padding: 40px; 
+    background-color:darkslategray;
+}
+
+/* Title Styling */
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    align-items: left;
+}
+
+/* Button Styling */
+button {
+    margin: 15px;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: #2c3e50;
+    color: white;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    height: calc(100vh - 100px); 
+    padding-top: 20px;
+    overflow-y: auto;
+    overflow-x: hidden; 
+}
+
+
+.sidebar {
+    width: 280px;
+    background-color: #2c3e50;
+    color: white;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    height: calc(100vh - 100px); 
+    padding-top: 20px;
+    overflow-y: auto;
+    overflow-x: hidden; 
+}
+
+.sidebar .button {
+    width: 90%;
+    padding: 15px;
+    background-color: #34495e;
+    color: white;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.sidebar .button {
+    background-color: #2c3e50; /* Default color */
+    color: white;
+    padding: 10px;
+    display: block;
+    text-align: left;
+    border: none;
+    width: 90%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar .button:hover,
+.sidebar .button.active {
+    background-color: #16a085; /* Highlight color */
+}
+
+/* Collapsible Section Styles */
+.section-group {
+    margin-bottom: 5px;
+}
+
+.section-toggle {
+    cursor: pointer;
+    width: 90%;
+    background-color: #34495e;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    text-align: left;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.section-toggle:hover {
+    background-color: #2c3e50;
+}
+
+.section-toggle.expanded {
+    background-color: #2c3e50;
+    border-bottom: 1px solid #16a085;
+}
+
+.section-toggle:disabled {
+    background-color: #34495e;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.section-toggle:disabled:hover {
+    background-color: #2c3e50;
+}
+
+.subsections {
+    background-color: #1a252f;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.subsections.show {
+    display: block !important;
+}
+
+.subsection-button {
+    width: 95%;
+    padding: 10px 20px;
+    background-color: #243447;
+    color: #ecf0f1;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    border-left: 3px solid transparent;
+    opacity: 1;
+}
+
+.subsection-button:disabled {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.subsection-button:hover {
+    background-color: #2c3e50;
+    border-left-color: #16a085;
+    padding-left: 25px;
+}
+
+.subsection-button.active {
+    background-color: #16a085;
+    border-left-color: #1abc9c;
+    font-weight: bold;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+}
+
+.main-content p {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Create Page Specific Styles */
+body.create-page {
+    background-color: #ffffff;
+    /* White background for create page */
+}
+
+body.create-page .sidebar {
+    display: block;
+}
+
+body.create-page .main-content {
+    margin-left: 0;
+    padding: 40px 20px;
+}
+
+/* Responsive Styles for smaller screens */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* General table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0;
+    color: black;
+
+}
+td, th {
+    border: 1px solid black;
+    padding: 4px 8px;  /* Reduced padding to decrease row height */
+    text-align: left;
+    font-size: 18px; /* Smaller font size for compactness */
+    height: 20px; /* Ensure rows are only one line high */
+    color:black
+}
+
+th {
+    background-color: #f2f2f2;  /* Light background for table headers */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Adjust the table layout */
+table.detail-box {
+    margin-top: -0px; /* Remove negative margin */
+}
+
+/* Adjust spacing for rows in the details box */
+table.detail-box tr {
+    margin-bottom: 5px; /* Reduced space between rows */
+}
+
+/* Reference row styling */
+.reference-row {
+    padding: 4px 8px;
+    text-align: left;
+    color: black;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    width: 100%;              /* Full width of table cell */
+    height: 35px;             /* Same height for all */
+    padding: 6px 10px;        /* Equal padding */
+    font-size: 14px;          /* Font size consistent */
+    border: 1px solid #ccc;   /* Uniform border */
+    border-radius: 4px;       /* Rounded corners */
+    box-sizing: border-box;   /* Prevent overflow */
+    background-color: #fff;   /* White background */
+    appearance: none;         /* Remove browser default styles */
+    -webkit-appearance: none; /* Safari/Chrome */
+    -moz-appearance: none;    /* Firefox */
+}
+
+/* Optional: Add a small custom dropdown arrow */
+select {
+    background: #fff url("data:image/svg+xml;utf8,<svg fill='black' height='12' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M2 4 L6 8 L10 4 Z'/></svg>") no-repeat right 10px center;
+    background-size: 12px;
+    padding-right: 25px; /* Space for arrow */
+    cursor: pointer;
+}
+/* Section name field specific styling */
+#section-name {
+    font-size: 18px; /* Slightly smaller font for better fit */
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+#section-name:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+/* Observation table styling */
+
+table.observations td select {
+    width: 100px;  /* Adjust width as needed */
+    padding: 8px;  /* Adjust padding as needed */
+    height: 40px;  /* Increase the height of the select box */
+    font-size: 18px;  /* Keep the font size for the options */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+table.observations td select option {
+    width: 100%;  /* Ensure options take full width */
+    padding: 8px;
+    font-size: 13px;  /* Font size for options */
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    background-color: #f9f9f9;
+}
+
+table.observations td {
+    color: black;
+}
+
+table.observations th {
+    text-align: center !important; /* Centers the text horizontally */
+    vertical-align: middle !important; /* Centers the text vertically */
+    padding: 10px;  /* Optional: add padding for better spacing */
+    font-size: 16px; /* Optional: adjust font size */
+    background-color: #f1f1f1;  /* Optional: background color for headers */
+}
+
+/* Targeting the second column header */
+table.observations th:nth-child(2) {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 16px;
+    background-color: #f1f1f1;  /* Optional: add background color */
+    color: #333;  /* Optional: change text color */
+}
+table.observations th:nth-child(5) {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 16px;
+    background-color: #f1f1f1;  /* Optional: add background color */
+    color: #333;  /* Optional: change text color */
+}
+textarea {
+    width: 100%;
+    padding: 4px;  /* Reduced padding */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px; /* Smaller font size */
+    height: 50px; /* Limit textarea height to one line */
+    resize: none; /* Disable resizing to maintain consistent height */
+}
+
+/* Inline numeric inputs in observation rows */
+.observation_text input[type="number"] {
+    width: 48%;
+    display: inline-block;
+    margin: 2px 1%;
+    padding: 6px;
+    font-size: 14px;
+}
+
+/* Grid layout for labeled observation status inputs (e.g., S.No 4.2) */
+.input-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 8px;
+    align-items: center;
+}
+.input-grid label {
+    font-size: 14px;
+    color: #333;
+}
+.input-grid input[type="text"] {
+    width: 100%;
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style for document verification heading */
+
+#observations-section-1_0 {
+    margin-top: 20px;  /* Adjust as needed */
+    margin-bottom: 200px;  /* Adjust as needed */
+}
+#observations-section-4_0 {
+    margin-top: 10px;  /* Adjust as needed */
+    margin-bottom: 150px;  /* Adjust as needed */ 
+}
+#observations-section-10_0 {
+    margin-top: 10px;  /* Adjust as needed */
+    margin-bottom: 150px;  /* Adjust as needed *// 
+}
+#observations-section-16_0 {
+    margin-top: 10px;  /* Adjust as needed */
+    margin-bottom: 150px;  /* Adjust as needed */ 
+}
+#observations-section-17_0 {
+    margin-top: 10px;  /* Adjust as needed */
+    margin-bottom: 150px;  /* Adjust as needed */
+}
+/* Button styling */
+button.add-image {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 6px 10px;  /* Reduced padding for compactness */
+    font-size: 12px; /* Smaller font size for buttons */
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+.upload-label {
+    display: inline-block;
+    background-color: #008CBA; /* Custom blue color */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .upload-label:hover {
+    background-color: #007B9E; /* Darker blue on hover */
+  }
+
+  /* Hide the default file input */
+  #file-input-1 {
+    display: none;
+  }
+/* Button group styling */
+.action-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Upload options styling */
+.upload-options {
+    display: none;
+    margin-top: 5px;
+}
+
+.upload-options button, .upload-options input {
+    margin-top: 3px;
+}
+
+/* Show upload options when "Add Image" is clicked */
+button.show-upload-options:focus + .upload-options {
+    display: block;
+}
+
+/* Image styling */
+img {
+    max-width: 100%;
+    max-height: 100px; /* Reduced image max height */
+    display: block;
+    margin-top: 5px;
+}
+
+/* Select input styling */
+
+
+#status-dropdown {
+    padding: 2px; /* Reduce padding */
+    font-size: 15px; /* Keep smaller font size */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 40px; /* Ensure fixed height */
+    width: 100%; /* Make it fit the table cell */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    -webkit-appearance: none; /* Remove default browser styling */
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center; /* Center align text */
+  }
+  
+  th {
+    text-align: center; /* Centers the text horizontally */
+    vertical-align: middle; /* Centers the text vertically (optional) */  
+  }
+/* File input styling */
+input[type="file"] {
+    display: none;
+}
+
+button.add-image {
+    display: inline-block;
+    background-color: #008CBA;
+}
+
+button.add-image:hover {
+    background-color: #007B9E;
+}
+
+/* Highlighting for select inputs */
+select.not-ok {
+    border-color: red;
+}
+
+select.ok {
+    border-color: green;
+}
+
+/* Section header styling */
+h3 {
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;  /* Reduced margin */
+}
+
+/* Hover effect for table rows */
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Ensure tables fit within the page */
+@media print, screen {
+    table {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .action-buttons {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .upload-options {
+        display: block;
+    }
+}
+
+/* To fit tables without breaking the page */
+body {
+    padding: 10px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Ensures there's no vertical overflow */
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Add scrolling if content overflows the page */
+.main-content {
+    overflow-y: auto;
+    max-height: 100vh;
+    padding-bottom: 10px; /* To prevent content from touching bottom */
+}
+
+.add-image input[type="file"] {
+    display: block !important;  /* Ensures it is visible */
+    margin-top: 0px;
+}
+
+.signature-container {
+    margin-bottom: 10px;
+}
+
+.signature-preview {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.signature-preview img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+/* Ensure padding between table cells */
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo-container {
+    position: fixed; /* Keeps the logo visible even when scrolling */
+    top: 10px;
+    left: 10px;
+    z-index: 1000; /* Ensures the logo stays on top of other elements */
+  }
+  
+  .logo {
+    max-width: 150px; /* Set a max width for responsiveness */
+    height: auto; /* Maintain the aspect ratio */
+  }
+
+  /* Container for the button */
+.acto-buttons {
+    position: fixed; /* Ensures it's fixed to the top-right corner */
+    top: 10px; /* Adjust distance from the top */
+    right: 10px; /* Adjust distance from the right */
+    z-index: 1000; /* Keep above other elements */
+  }
+  
+  /* Styling for the logout button */
+  .logout-button {
+    background-color: #007bff; /* Primary blue color */
+    color: #fff; /* White text */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text for emphasis */
+    padding: 10px 20px; /* Add some padding */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth hover transition */
+  }
+  
+  /* Hover effect */
+  .logout-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow */
+  }
+  
+  /* Focus effect for accessibility */
+  .logout-button:focus {
+    outline: 2px solid #0056b3; /* Focus outline */
+    outline-offset: 2px; /* Add space between the outline and button */
+  }
+  
+
+  .logout-button i {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 18px; /* Icon size */
+    vertical-align: middle;
+  }
+  
+  .save-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .save-button button {
+    background-color: #28a745; /* Green color */
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .save-button button:hover {
+    background-color: #218838; /* Darker green on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .save-button button:focus {
+    outline: 2px solid #218838;
+    outline-offset: 2px;
+  }
+  
+/* Button Styling inside Sidebar */
+#sidebar button {
+    background-color: #4CAF50;  /* Green background for contrast */
+    color: white;  /* White text color */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;  /* Adds some space around the button */
+    width: 100%;  /* Makes the button full width */
+    border-radius: 5px;  /* Rounded corners */
+}
+
+/* Button hover effect */
+#sidebar button:hover {
+    background-color: #45a049;  /* Darker green when hovering */
+}
+
+/* Main Content Area */
+main {
+    margin-left: 280px;  /* Margin to the left to make room for the sidebar */
+    padding-top: 120px;  /* Adds space to make sure content does not overlap the header */
+}
+
+h3 {
+    margin-top: 50px;  /* Adjusted to make sure it starts after the header and margin */
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;  /* Set text color */
+    padding-left: 20px;  /* Add some padding to the left if needed */
+    margin-bottom: 20px;  /* Add some bottom margin for spacing */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    #loco-header {
+        padding: 10px;
+        font-size: 16px;
+        height: 80px;  /* Adjusted height for smaller screens */
+    }
+    #sidebar {
+        position: relative;
+        top: 80px;  /* Adjust the top margin for small screens */
+        width: 200px;
+        height: calc(100vh - 80px);
+    }
+    main {
+        margin-left: 0; /* Full width for smaller screens */
+    }
+}
+
+/* Form Container Styling */
+.form-container {
+    position: fixed;
+    justify-content: center; /* Center the content horizontally */
+    align-items: flex-start; /* Align items to the top */
+    margin-top: 0px;
+    padding: 20px;
+    width: 90%; /* Set width to 90% for smaller screens */
+    max-width: 1200px; /* Max width for large screens */
+    background-color: #f9f9f9; /* Light background for contrast */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    box-sizing: border-box;
+    overflow: auto; /* Ensures content is scrollable if too wide */
+}
+
+/* Table Styling */
+.loco-table {
+    width: 100%; /* Make the table fit the container */
+    border-collapse: collapse;
+    font-size: 14px; /* Adjust font size */
+    table-layout: fixed; /* Ensure all columns have equal width */
+}
+
+/* Equal width for all columns */
+.loco-table td {
+    width: 16.6%; /* Each column gets equal space, divided by 6 columns */
+    padding: 10px;
+    vertical-align: middle;
+    text-align: left;
+    word-wrap: break-word; /* Ensures long text does not overflow */
+}
+
+/* Input Fields Styling */
+.loco-table input[type="text"],
+.loco-table input[type="date"],
+.loco-table select {
+    width: 100%; /* Inputs and selects take full width of the cell */
+    padding: 6px;
+    font-size: 13px;
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box;
+}
+
+/* Radio Buttons */
+.loco-type-options label,
+.brake-type-options label {
+    display: inline-block;
+    margin-right: 15px; /* Space between radio buttons */
+    font-size: 14px; /* Ensure font size is consistent */
+}
+
+/* Section Titles */
+.loco-table strong {
+    font-weight: bold;
+    color: #333; /* Slightly darker text */
+}
+
+/* Reference Row Styling */
+.reference-row {
+    font-size: 12px;
+    color: #666;
+    text-align: left;
+    padding: 10px 0;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .loco-table {
+        font-size: 12px; /* Slightly smaller font for smaller screens */
+    }
+
+    .loco-table td {
+        display: block; /* Make the table rows stack vertically */
+        width: 100%; /* Make each column take full width */
+        padding: 8px 0;
+    }
+
+    .loco-table input[type="text"],
+    .loco-table input[type="date"],
+    .loco-table select {
+        width: 100%; /* Ensure full width for input fields */
+    }
+
+    .loco-type-options,
+    .brake-type-options {
+        display: block; /* Stack radio buttons vertically */
+    }
+
+    .form-container {
+        width: 100%; /* Ensure the form container spans full width on small screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+}
+
+/* Responsive Design for Very Small Screens */
+@media (max-width: 480px) {
+    .loco-table td {
+        font-size: 11px; /* Smaller font size for very small screens */
+    }
+
+    .loco-table input[type="text"],
+    .loco-table input[type="date"],
+    .loco-table select {
+        font-size: 12px; /* Adjust font size inside input fields */
+    }
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between; /* Space out the elements */
+    align-items: center; /* Vertically align the elements */
+    padding: 20px 30px; /* Padding for breathing space */
+    color: white; /* White text for contrast */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    top: 0%;
+}
+
+/* Logo Container Styling */
+.logo-container {
+    flex: 1; /* Allow the logo container to take up available space */
+}
+
+.logo {
+    max-width: 150px; /* Limit logo size */
+    height: auto;
+}
+
+/* Action Buttons (Logout) Styling */
+.acto-buttons {
+    display: flex;
+    align-items: right;
+    font-size: 16px; /* Adjust font size */
+    margin-top: auto;
+}
+
+.acto-buttons .fas {
+    font-size: 18px; /* Icon size */
+    color: white;
+}
+.actio-buttons {
+    display: flex;
+    align-items: right;
+    font-size: 16px; /* Adjust font size */
+    margin-top: auto;
+}
+
+.actio-buttons .fas {
+    font-size: 18px; /* Icon size */
+    color: white;
+}
+.logout-button {
+    background-color: #2980b9; /* Blue background */
+    color: white; /* White text */
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #1f6fa3; /* Darker blue on hover */
+}
+
+/* Title Styling */
+.page-title {
+    text-align: center; /* Center the title */
+    font-size: 24px; /* Font size */
+    font-weight: bold; /* Bold title */
+    text-transform: uppercase; /* Uppercase title */
+    letter-spacing: 2px; /* Slight letter-spacing for readability */
+    color: black; /* White color for title */
+
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the left */
+        text-align: center; /* Center align title */
+    }
+
+    .logo-container {
+        margin-bottom: 10px; /* Space below logo */
+    }
+
+    .page-title {
+        font-size: 20px; /* Slightly smaller title */
+    }
+
+    .acto-buttons {
+        justify-content: center; /* Center logout button on smaller screens */
+        margin-top: 10px;
+    }
+}
+#loco-id {
+    width: 100%; /* Ensure it fills the container width */
+    font-size: 18px; /* Increase font size */
+    box-sizing: border-box; /* Ensure padding is part of the width */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+    height: 35px; /* Set height similar to the select */
+    padding: 5px; /* Optional: adds some padding inside the input */
+}
+
+/* Style for the select element (button size increase) */
+#railway-division  {
+    width: 100%; /* Ensure it still fills the container width */
+    font-size: 18px; /* Increase font size */
+    box-sizing: border-box; /* Ensure padding is part of the width */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+    height: 35px;
+}
+
+#shed-name{
+    width: 100%; /* Ensure it still fills the container width */
+    font-size: 18px; /* Increase font size */
+    box-sizing: border-box; /* Ensure padding is part of the width */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+    height: 35px;
+
+}
+#loco-type{
+    width: 100%; /* Ensure it still fills the container width */
+    font-size: 18px; /* Increase font size */
+    box-sizing: border-box; /* Ensure padding is part of the width */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+    height: 35px;
+}
+#brake-type{
+    width: 100%; /* Ensure it still fills the container width */
+    font-size: 18px; /* Increase font size */
+    box-sizing: border-box; /* Ensure padding is part of the width */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+    height: 35px;
+
+}
+#date {
+    width: 100%; /* Ensure it fills the container width */
+    font-size: 18px; /* Increase font size */
+    box-sizing: border-box; /* Ensure padding is part of the width */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+    height: 35px; /* Set height similar to the select and input */
+    padding: 5px; /* Optional: adds padding inside the input */
+}
+
+
+/* Flexbox to align heading and dropdown */
+.heading-container {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    gap: 10px; /* Adds space between heading and dropdown */
+}
+
+/* Optional: Adjust dropdown styling */
+.heading-container select {
+    padding: 5px;
+    font-size: 14px;
+}
+
+#form-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%; /* Adjust the width as needed */
+    background-color: #f8f9fa;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 8px;
+}
+
+.loco-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.loco-table td {
+    padding: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.loco-table input,
+.loco-table select {
+    width: 90%;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.loco-table input[type="text"],
+.loco-table input[type="date"],
+.loco-table select {
+    height: 25px;
+}
+
+@media (max-width: 768px) {
+    #form-container {
+        width: 95%; /* Adjust for smaller screens */
+        padding: 5px;
+    }
+    
+    .loco-table {
+        font-size: 12px;
+    }
+
+    .loco-table td {
+        padding: 3px;
+    }
+
+    .loco-table input,
+    .loco-table select {
+        font-size: 10px;
+        height: 20px;
+    }
+}
+
+#documentVerificationDropdown {
+    height: 40px; /* Adjust the value as needed */
+    font-size: 16px; /* Optional: Adjust font size for better appearance */
+    width:90px;
+}
+/* Ensure the heading stays at the top and is not part of the scrollable area */
+.section-heading {
+    margin-top: 70px; /* Increase margin-top to move the heading further down */
+    padding-bottom: 15px; /* Optional: Adjust bottom padding for spacing */
+    font-size: 20px;
+    margin-bottom: 0.5em; 
+}
+
+/* Make the table container scrollable while keeping the header fixed */
+.table-container {
+    max-height: 400px; /* Adjust the height of the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 20px; /* Adds some space between the heading and the table */
+    margin-bottom: 0; 
+}
+
+.section-headings {
+    top : 0.5em;
+    margin-bottom: 0.5em;  /* Adjust this value to reduce the gap */
+}
+
+.table-containers {
+    margin-bottom:0;
+    margin-top: 0;  /* Remove any default margin */
+}
+
+/* Optional: Add some padding to the table for better appearance */
+table.observations {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.observations th, table.observations td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table.observations th {
+    background-color: #f2f2f2;
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1; /* Ensure the header stays above the content */
+}
+
+/* Make sure the select box and textarea are visible */
+select, textarea {
+    width: 100%;
+    padding: 5px;
+}
+/* Ensure the button appears below the header and doesn't overlap */
+.actio-buttons {
+    position: absolute;
+    top:80px;
+    right:0;
+}
+
+.actio-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Green background color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actio-buttons button:hover {
+    background-color: #45a049; /* Darker shade on hover */
+}
+
+
+  
+/* Section Action Dropdown Styling */
+.section-action-container {
+    margin: 10px 0;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-action-label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.section-action-dropdown {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    width: auto;
+    min-width: 250px;
+    height: auto;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    background-image: none; /* Reset distinct arrow if needed, or keep default */
+}
+
+.section-action-dropdown:hover {
+    border-color: #007bff;
+    box-shadow: 0 2px 6px rgba(0,123,255,0.15);
+}
+
+.section-action-dropdown:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+
+
+/* Full screen overlay */
+#loader, #messageBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Box inside */
+.loader-box, .message-content {
+  background: white;
+  padding: 25px 40px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+}
+
+/* Spinner */
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 15px;
+  animation: spin 1s linear infinite;
+}
+
+/* Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
