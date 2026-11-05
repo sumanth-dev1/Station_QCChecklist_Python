@@ -50,7 +50,9 @@ def get_mysql_server_connection():
             last_error = err
             if getattr(err, "errno", None) != 1045:
                 raise err
-    raise last_error
+    if last_error is not None:
+        raise last_error
+    raise RuntimeError('Could not connect to MySQL server with any password.')
 
 def setup_or_migrate():
     """
