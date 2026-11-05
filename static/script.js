@@ -712,10 +712,11 @@ async function showSection(section, subsection) {
     const urlParams = new URLSearchParams(window.location.search);
     const stationIdFromUrl = urlParams.get('station_id');
 
-    // If we came from the Edit button, show Get Details and hide Save
+    // If we came from the Edit button, auto-load all details and observations
     if (stationIdFromUrl) {
       saveBtnDisplay = "none";
       getDetailsBtnDisplay = "inline-block";
+      setTimeout(() => autoLoadReportDetailsIfUrlPresent(), 50);
     }
     mainContent.innerHTML += `
       <div class="actio-buttons">
@@ -9372,8 +9373,8 @@ function getDetails() {
   let sectionName = document.getElementById("section-name").value.trim();
 
 
-  if (!stationId || !zone || !division || !sectionName) {
-    alert("Please fill in all the fields.");
+  if (!stationId) {
+    alert("Please enter Station ID.");
     return;
   }
 
@@ -9867,7 +9868,7 @@ function showUploadOptions(rowId) {
 let currentCamera = "environment"; // Default to back camera
 let observations = [];
 
-// ✅ Start Camera
+// ✅ Start Camera (Optimized for Tablets, Mobile & Desktop)
 async function startCamera(rowId) {
   const cameraContainer = document.getElementById(`camera-container-${rowId}`);
   const video = document.getElementById(`camera-${rowId}`);
@@ -9877,36 +9878,91 @@ async function startCamera(rowId) {
     return;
   }
 
-  try {
-    let stream = null;
+  // Ensure any lingering stream on this video element is cleanly stopped first
+  stopCamera(rowId);
 
-    // 1. If asking for environment (back), try to force it with 'exact' first
-    if (currentCamera === 'environment') {
+  try {
+    let constraints = null;
+
+    // 1. First attempt: Enumerate video devices to target physical front/back camera directly
+    if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
       try {
-        stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: { exact: "environment" } },
-          audio: false
-        });
-        console.log("🎥 Camera started with exact environment mode.");
-      } catch (e) {
-        console.warn("⚠️ Exact environment mode failed, falling back to ideal/default...", e);
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter((d) => d.kind === "videoinput");
+
+        if (videoDevices.length > 1) {
+          if (currentCamera === "user") {
+            // Target Front camera: look for 'front', 'user', or 'secondary'
+            const frontDev = videoDevices.find((d) => {
+              const lbl = (d.label || "").toLowerCase();
+              return lbl.includes("front") || lbl.includes("user") || lbl.includes("forward");
+            });
+            const targetDev = frontDev || videoDevices[0];
+            if (targetDev && targetDev.deviceId) {
+              constraints = {
+                video: { deviceId: { exact: targetDev.deviceId } },
+                audio: false
+              };
+            }
+          } else {
+            // Target Back camera: look for 'back', 'rear', or 'environment'
+            const backDev = videoDevices.find((d) => {
+              const lbl = (d.label || "").toLowerCase();
+              return lbl.includes("back") || lbl.includes("rear") || lbl.includes("environment");
+            });
+            const targetDev = backDev || videoDevices[videoDevices.length - 1];
+            if (targetDev && targetDev.deviceId) {
+              constraints = {
+                video: { deviceId: { exact: targetDev.deviceId } },
+                audio: false
+              };
+            }
+          }
+        }
+      } catch (enumErr) {
+        console.warn("Could not enumerate devices:", enumErr);
       }
     }
 
-    // 2. If 'exact' failed or we want 'user' (front), use standard constraints
+    let stream = null;
+
+    // Try deviceId constraint if resolved
+    if (constraints) {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia(constraints);
+        console.log(`🎥 Camera acquired via physical deviceId (Mode: ${currentCamera})`);
+      } catch (cErr) {
+        console.warn("Direct deviceId stream request failed, falling back to facingMode...", cErr);
+      }
+    }
+
+    // 2. Second attempt: Exact facingMode
+    if (!stream) {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { exact: currentCamera } },
+          audio: false
+        });
+        console.log(`🎥 Camera acquired via exact facingMode: ${currentCamera}`);
+      } catch (exactErr) {
+        console.warn(`Exact facingMode '${currentCamera}' failed, trying ideal mode...`);
+      }
+    }
+
+    // 3. Third attempt: Standard facingMode fallback
     if (!stream) {
       stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: currentCamera },
         audio: false
       });
-      console.log(`🎥 Camera started (Fallback/Normal Mode: ${currentCamera})`);
+      console.log(`🎥 Camera acquired via ideal facingMode: ${currentCamera}`);
     }
 
     video.srcObject = stream;
     cameraContainer.style.display = "block";
   } catch (error) {
     console.error("🚨 Error starting the camera:", error);
-    alert("⚠️ Unable to access the camera. Please check permissions.");
+    alert("⚠️ Unable to access the camera. Please check camera permissions in your tablet browser.");
   }
 }
 
@@ -10138,11 +10194,13 @@ function updateObservations(rowId, imagePath) {
   console.log("📜 Updated Observations:", observations);
 }
 
-// ✅ Switch Camera (Front/Back)
-function switchCamera(rowId) {
+// ✅ Switch Camera (Front/Back) with tablet hardware cooldown
+async function switchCamera(rowId) {
   currentCamera = currentCamera === "environment" ? "user" : "environment";
   stopCamera(rowId);
-  startCamera(rowId);
+  // Wait 250ms for the tablet camera sensor hardware lock to release
+  await new Promise((resolve) => setTimeout(resolve, 250));
+  await startCamera(rowId);
 }
 
 
@@ -10625,12 +10683,18 @@ async function addRowWithPassword(sectionId) {
     }
   }
 
-  // Save to backend
+  // Save to backend (Scoped to this station and user so other stations/tablets do NOT see it)
+  const stationInfo = JSON.parse(sessionStorage.getItem("stationInfo") || "{}");
+  const currentStationId = stationInfo.stationId || document.getElementById("station-id")?.value?.trim() || "";
+  const currentUserId = localStorage.getItem("user_id") || "";
+
   const formData = new FormData();
   formData.append("action", "add");
   formData.append("section_id", sectionId);
   formData.append("s_no", nextSno);
   formData.append("description", unitName);
+  if (currentStationId) formData.append("station_id", currentStationId);
+  if (currentUserId) formData.append("user_id", currentUserId);
 
   try {
     const resp = await fetch("manage_row_templates", { method: "POST", body: formData });
@@ -10727,10 +10791,14 @@ async function deleteRowTemplate(span, s_no, sectionId) {
 
   if (!confirm("Are you sure? This will remove the row for all future reports.")) return;
 
+  const stationInfo = JSON.parse(sessionStorage.getItem("stationInfo") || "{}");
+  const currentStationId = stationInfo.stationId || document.getElementById("station-id")?.value?.trim() || "";
+
   const formData = new FormData();
   formData.append("action", "delete");
   formData.append("section_id", sectionId);
   formData.append("s_no", s_no);
+  if (currentStationId) formData.append("station_id", currentStationId);
 
   try {
     const resp = await fetch("manage_row_templates", { method: "POST", body: formData });
@@ -10746,11 +10814,17 @@ async function deleteRowTemplate(span, s_no, sectionId) {
   }
 }
 
-// Load custom rows for a section
+// Load custom rows for a section (Only loads global templates + this specific station's rows)
 async function loadCustomRows(sectionId) {
+  const stationInfo = JSON.parse(sessionStorage.getItem("stationInfo") || "{}");
+  const currentStationId = stationInfo.stationId || document.getElementById("station-id")?.value?.trim() || "";
+  const currentUserId = localStorage.getItem("user_id") || "";
+
   const formData = new FormData();
   formData.append("action", "fetch");
   formData.append("section_id", sectionId);
+  if (currentStationId) formData.append("station_id", currentStationId);
+  if (currentUserId) formData.append("user_id", currentUserId);
 
   try {
     const resp = await fetch("manage_row_templates", { method: "POST", body: formData });
@@ -10897,6 +10971,80 @@ async function checkForUpdates() {
 }
 
 // Automatically check for updates when internet connection is restored
+
+// Auto-load station details and observations when opening Edit Report from viewReports
+async function autoLoadReportDetailsIfUrlPresent() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const stationIdFromUrl = urlParams.get('station_id');
+  if (!stationIdFromUrl) return;
+
+  console.log("🔄 Auto-loading report details for Station ID:", stationIdFromUrl);
+
+  const stationIdInput = document.getElementById("station-id");
+  if (stationIdInput) stationIdInput.value = stationIdFromUrl;
+
+  try {
+    const formData = new FormData();
+    formData.append("station-id", stationIdFromUrl);
+
+    const resp = await fetch("generateReport", {
+      method: "POST",
+      body: formData
+    });
+    const res = await resp.json();
+
+    if (!res.success || !res.stationDetails) {
+      console.warn("Auto-load failed to find station details:", res.message);
+      return;
+    }
+
+    console.log("✅ Auto-loaded station details:", res.stationDetails);
+    populateStationDetails(res.stationDetails);
+
+    if (window.updateDivisionNames) window.updateDivisionNames();
+    if (window.updateSectionNames) window.updateSectionNames();
+
+    setTimeout(() => {
+      const divisionElem = document.getElementById("division");
+      if (divisionElem && res.stationDetails.division) {
+        divisionElem.value = res.stationDetails.division;
+      }
+      const sectionNameElem = document.getElementById("section-name");
+      if (sectionNameElem && res.stationDetails.section_name) {
+        sectionNameElem.value = res.stationDetails.section_name;
+      }
+    }, 100);
+
+    window.allObservations = res.observations || [];
+    let sectionWiseSno = {};
+    if (res.observations) {
+      res.observations.forEach((observation) => {
+        let sectionID = observation.section_id;
+        if (!sectionWiseSno[sectionID]) {
+          sectionWiseSno[sectionID] = [];
+        }
+        if (!sectionWiseSno[sectionID].includes(observation.S_no)) {
+          sectionWiseSno[sectionID].push(observation.S_no);
+        }
+      });
+    }
+    window.sectionWiseSno = sectionWiseSno;
+
+    const zone = res.stationDetails.railway_zone || "";
+    const division = res.stationDetails.division || "";
+    await checkAndHighlightSections(stationIdFromUrl, zone, division);
+
+    const saveBtn = document.getElementById('station-info-btn');
+    const getDetailsBtn = document.getElementById('get-details-btn');
+    if (saveBtn) saveBtn.style.display = 'none';
+    if (getDetailsBtn) getDetailsBtn.style.display = 'inline-block';
+
+    console.log("✅ All report details auto-populated without manual entry!");
+  } catch (e) {
+    console.error("Auto-load report details error:", e);
+  }
+}
+
 window.addEventListener('online', checkForUpdates);
 
 // Also check immediately when the page loads if already online
