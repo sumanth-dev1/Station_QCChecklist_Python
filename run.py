@@ -9,8 +9,15 @@ if sys.stderr is None:
 import config
 from waitress import serve
 from app import app
+from database.setup_database import setup_or_migrate
 
 if __name__ == "__main__":
+    try:
+        # Automatically ensures station_info exists with all 23 tables and admin user
+        setup_or_migrate()
+    except Exception as e:
+        print(f"Database pre-check notice: {e}")
+
     print("========================================================")
     print(f"  STATION QC PYTHON SERVER STARTING ON PORT {config.PORT}")
     print(f"  Access URL: http://localhost:{config.PORT}/")
