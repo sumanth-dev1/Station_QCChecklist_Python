@@ -14,6 +14,7 @@ DB_USER = os.environ.get("DB_USER", "root")
 DB_PASSWORD = os.environ.get("DB_PASSWORD", "")
 DB_NAME = os.environ.get("DB_NAME", "station_info")
 PORT = int(os.environ.get("PORT", "5001"))
+CONFIG_API_BASE_URL = os.environ.get("CONFIG_API_BASE_URL", "http://localhost:6015/api/configuration")
 
 # Optional legacy directory for historical inspection uploads
 LEGACY_UPLOADS_DIR = os.environ.get("LEGACY_UPLOADS_DIR", "")

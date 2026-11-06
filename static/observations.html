@@ -555,11 +555,25 @@
             activeSubRows.forEach(obs => {
               const formattedDescription = formatDescription(obs.observation_text);
               let displayDescription = formattedDescription;
-              if (obs.barcode_kavach_main_unit && obs.barcode_kavach_main_unit.trim() !== '') {
-                const cleanBarcode = obs.barcode_kavach_main_unit.trim();
-                displayDescription = displayDescription.split(cleanBarcode).join('').trim();
-                while (displayDescription.endsWith('-')) { displayDescription = displayDescription.slice(0, -1).trim(); }
-                displayDescription += ` - ${cleanBarcode}`;
+              const scBarcode = (obs.barcode || obs.barcode_kavach_main_unit || '').trim();
+              const scAtr = (obs.atr_serial || '').trim();
+              if (scBarcode) {
+                displayDescription = displayDescription.split(scBarcode).join('').trim();
+                while (displayDescription.endsWith('-') || displayDescription.endsWith(':')) { displayDescription = displayDescription.slice(0, -1).trim(); }
+              }
+              if (scAtr) {
+                displayDescription = displayDescription.split(scAtr).join('').trim();
+                while (displayDescription.endsWith('-') || displayDescription.endsWith(':')) { displayDescription = displayDescription.slice(0, -1).trim(); }
+              }
+
+              if (scBarcode && scAtr && scBarcode === scAtr) {
+                displayDescription += ` - Serial / ATR: ${scBarcode}`;
+              } else if (scBarcode && scAtr) {
+                displayDescription += ` - Serial: ${scBarcode} (ATR: ${scAtr})`;
+              } else if (scBarcode) {
+                displayDescription += ` - Serial: ${scBarcode}`;
+              } else if (scAtr) {
+                displayDescription += ` - ATR: ${scAtr}`;
               }
 
               let statusText = (obs.observation_status || '').trim();
@@ -1280,7 +1294,8 @@
             return {
               S_no: obs.S_no,
               Description: decodeHtmlEntities(formatDescription(obs.observation_text)).trim(),
-              barcode: obs.barcode_kavach_main_unit,
+              barcode: obs.barcode_kavach_main_unit || obs.barcode,
+              atr_serial: obs.atr_serial,
               Requirement: (obs.requirement_text || "N/A").trim(),
               Status: obs.observation_status,
               Remarks: obs.remarks,
@@ -1338,11 +1353,24 @@
               subRows.forEach(r => {
                 const cleanStatus = decodeHtmlEntities(String(r.Status || "").replace(/<[^>]*>/g, ""));
                 let desc = decodeHtmlEntities(String(r.Description || "").replace(/<\/?b>/g, ""));
-                if (r.barcode && r.barcode.trim() !== "") {
-                  const cleanBarcode = r.barcode.trim();
-                  desc = desc.split(cleanBarcode).join('').trim();
-                  while (desc.endsWith('-')) { desc = desc.slice(0, -1).trim(); }
-                  desc += ` - ${cleanBarcode}`;
+                const scBarcode = (r.barcode || '').trim();
+                const scAtr = (r.atr_serial || '').trim();
+                if (scBarcode) {
+                  desc = desc.split(scBarcode).join('').trim();
+                  while (desc.endsWith('-') || desc.endsWith(':')) { desc = desc.slice(0, -1).trim(); }
+                }
+                if (scAtr) {
+                  desc = desc.split(scAtr).join('').trim();
+                  while (desc.endsWith('-') || desc.endsWith(':')) { desc = desc.slice(0, -1).trim(); }
+                }
+                if (scBarcode && scAtr && scBarcode === scAtr) {
+                  desc += ` - Serial / ATR: ${scBarcode}`;
+                } else if (scBarcode && scAtr) {
+                  desc += ` - Serial: ${scBarcode} (ATR: ${scAtr})`;
+                } else if (scBarcode) {
+                  desc += ` - Serial: ${scBarcode}`;
+                } else if (scAtr) {
+                  desc += ` - ATR: ${scAtr}`;
                 }
                 tableBody.push([
                   r.S_no,

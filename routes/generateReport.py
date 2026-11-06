@@ -93,6 +93,13 @@ def generateReport():
 
         observations = []
 
+        has_atr_col = False
+        try:
+            cursor.execute("SHOW COLUMNS FROM verification_of_equipment_serial_numbers LIKE 'atr_serial'")
+            has_atr_col = bool(cursor.fetchone())
+        except Exception:
+            has_atr_col = False
+
         for table_name, config in TABLE_MAP.items():
             sec_id = config['id']
             img_entity = config['img_entity']
@@ -101,7 +108,10 @@ def generateReport():
             if sec_id == '13_0' and not sec_images:
                 sec_images = images_map.get('rfid_tags', {})
 
-            extra_col = ", barcode_kavach_main_unit" if table_name == 'verification_of_equipment_serial_numbers' else ""
+            if table_name == 'verification_of_equipment_serial_numbers':
+                extra_col = ", barcode_kavach_main_unit, atr_serial" if has_atr_col else ", barcode_kavach_main_unit, NULL as atr_serial"
+            else:
+                extra_col = ""
             sql = f"SELECT S_no, observation_text, requirement_text, remarks, observation_status, '{sec_id}' as section_id {extra_col} FROM {table_name} WHERE station_id = %s"
 
             try:
@@ -110,6 +120,10 @@ def generateReport():
 
                 for obs in table_obs:
                     sno = obs['S_no']
+                    if table_name == 'verification_of_equipment_serial_numbers':
+                        obs['barcode'] = obs.get('barcode_kavach_main_unit')
+                        if not obs.get('atr_serial') and obs.get('barcode_kavach_main_unit'):
+                            obs['atr_serial'] = obs.get('barcode_kavach_main_unit')
                     raw_imgs = sec_images.get(sno, [])
                     valid_imgs = []
                     for ip in raw_imgs:

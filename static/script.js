@@ -749,6 +749,7 @@ async function showSection(section, subsection) {
           <tr>
             <th>S.No</th>
             <th>Units/Serial Numbers</th>
+            <th>ATR</th>
             <th>Observation</th>
             <th>Remarks/Comments</th>
             <th>Image</th>
@@ -773,7 +774,21 @@ async function showSection(section, subsection) {
     }
     toggleNotInstalledOption(this);
   "/>
-  </td>
+    </td>
+      
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
       
       <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
@@ -827,7 +842,22 @@ async function showSection(section, subsection) {
     }
     toggleNotInstalledOption(this);
   "/>
-  </td>
+    </td>
+      
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      
       <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
@@ -881,11 +911,23 @@ async function showSection(section, subsection) {
     }
     toggleNotInstalledOption(this);
   "/>
-  </td>
-  
-
-  
-  <td class="select" style="padding-right: 10px;">
+    </td>
+      
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -937,8 +979,23 @@ async function showSection(section, subsection) {
         toggleNotInstalledOption(this);
       "
     >
-  </td>
-  <td class="select" style="padding-right: 10px;">
+    </td>
+      
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -992,7 +1049,20 @@ async function showSection(section, subsection) {
     toggleNotInstalledOption(this);
   "
 />
-  <td class="select">
+    <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1045,7 +1115,20 @@ async function showSection(section, subsection) {
 />
   
   </td>
-  <td class="select">
+    <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1099,7 +1182,20 @@ async function showSection(section, subsection) {
 />
   </td>
   
-  <td class="select">
+    <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px; margin-bottom: 10px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1150,8 +1246,23 @@ async function showSection(section, subsection) {
     toggleNotInstalledOption(this);
   "
 />
-  </td>
-   <td class="select" style="padding-right: 10px;">
+    </td>
+      
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1203,8 +1314,23 @@ async function showSection(section, subsection) {
     toggleNotInstalledOption(this);
   "
 />
-  </td>
-  <td class="select" style="padding-right: 10px;">
+    </td>
+      
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1257,8 +1383,23 @@ async function showSection(section, subsection) {
   "
 />
   
-  </td>
-  <td class="select" style="padding-right: 10px;">
+    </td>
+      
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1312,8 +1453,23 @@ async function showSection(section, subsection) {
   "
 />
            
-          </td>
-            <td class="select" style="padding-right: 10px;">
+            </td>
+      
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1364,10 +1520,23 @@ async function showSection(section, subsection) {
     toggleNotInstalledOption(this);
   "
 /> 
-          </td>
-
-        
-            <td class="select" style="padding-right: 10px;">
+            </td>
+      
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1418,7 +1587,20 @@ async function showSection(section, subsection) {
     toggleNotInstalledOption(this);
   "
 />  
- <td class="select" style="padding-right: 10px;">
+   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1472,9 +1654,23 @@ FIU Scanner Card 1
   "
 />
   </div>
-</td>
-
-            <td class="select" style="padding-right: 10px;">
+  </td>
+      
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1525,7 +1721,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-            <td class="select" style="padding-right: 10px;">
+              <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1576,7 +1785,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-            <td class="select" style="padding-right: 10px;">
+              <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1627,7 +1849,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-            <td class="select" style="padding-right: 10px;">
+              <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1679,7 +1914,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-            <td class="select" style="padding-right: 10px;">
+              <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1731,7 +1979,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-            <td class="select" style="padding-right: 10px;">
+              <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1782,7 +2043,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-            <td class="select" style="padding-right: 10px;">
+              <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1834,7 +2108,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-             <td class="select" style="padding-right: 10px;">
+               <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1884,7 +2171,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1936,7 +2236,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-             <td class="select" style="padding-right: 10px;">
+               <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -1988,7 +2301,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-           <td class="select" style="padding-right: 10px;">
+             <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2040,7 +2366,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-           <td class="select" style="padding-right: 10px;">
+             <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2092,7 +2431,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-             <td class="select" style="padding-right: 10px;">
+               <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2143,7 +2495,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-             <td class="select" style="padding-right: 10px;">
+               <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2194,7 +2559,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-            <td class="select" style="padding-right: 10px;">
+              <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2245,7 +2623,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 />
-            <td class="select" style="padding-right: 10px;">
+              <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2296,7 +2687,20 @@ FIU Scanner Card 1
     toggleNotInstalledOption(this);
   "
 /> 
- <td class="select" style="padding-right: 10px;">
+   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2345,7 +2749,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2394,7 +2811,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2443,7 +2873,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2492,7 +2935,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2541,7 +2997,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2591,7 +3060,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2640,7 +3122,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2690,7 +3185,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2739,7 +3247,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2788,7 +3309,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2837,7 +3371,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2886,7 +3433,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2936,7 +3496,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -2986,7 +3559,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3036,7 +3622,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3086,7 +3685,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3136,7 +3748,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3186,7 +3811,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3236,7 +3874,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3286,7 +3937,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3336,7 +4000,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3386,7 +4063,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3436,7 +4126,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3486,7 +4189,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3536,7 +4252,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3586,7 +4315,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3636,7 +4378,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3686,7 +4441,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3736,7 +4504,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3786,7 +4567,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3836,7 +4630,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3886,7 +4693,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3936,7 +4756,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -3985,7 +4818,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -4034,7 +4880,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -4083,7 +4942,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -4134,7 +5006,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -4184,7 +5069,20 @@ FIU Scanner Card 1
     }
     toggleNotInstalledOption(this);
   "
-/> <td class="select" style="padding-right: 10px;">
+/>   <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
+      <td class="select" style="padding-right: 10px;">
     <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
       <option value="Select">Select</option>
       <option value="Matching">Matching</option>
@@ -4241,6 +5139,7 @@ FIU Scanner Card 1
               onclick="updateObservation('2_0', null, true)">
         Update
       </button>
+    <button type="button" id="fetch-unit-atr-btn-sec" onclick="fetchUnitAtr(this)" style="display: inline-block; padding: 10px 20px; font-size: 15px; font-weight: bold; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Fetch</button>
     <button type="button" id= "save-btn" style = "display: inline-block;" onclick="saveObservation('2_0')">Save</button>
      <button id="get-details-btn" onclick="getDetails()">Get Details</button>
      <button type="button" id="add-row-btn" style="background-color: #28a745; color: white;" onclick="addRowWithPassword('2_0')">Add Row</button>
@@ -8679,7 +9578,7 @@ async function saveObservation(section, subsection) {
       return;
     }
 
-    observations.push({
+    const obsItem = {
       S_no,
       row_key: row.getAttribute("data-key"),
       observation_text: text,
@@ -8688,7 +9587,20 @@ async function saveObservation(section, subsection) {
       remarks,
       observation_status: status,
       image_paths: imagePaths,
-    });
+    };
+
+    if (section === "2_0" || section === "2.0") {
+      const bcInput = row.querySelector("input[name='barcode_kavach_main_unit'], td:nth-child(2) input[type='text'], input[placeholder*='Barcode']");
+      const bcVal = bcInput ? bcInput.value.trim().slice(-15) : "";
+      const atrInput = row.querySelector(".atr-serial-input");
+      const atrVal = atrInput ? atrInput.value.trim() : "";
+      const serialNum = bcVal || atrVal;
+      obsItem.barcode = serialNum;
+      obsItem.barcode_kavach_main_unit = serialNum;
+      obsItem.atr_serial = atrVal || serialNum;
+    }
+
+    observations.push(obsItem);
   }
 
   // Deduplicate observations by S_no (keep the last one)
@@ -9010,18 +9922,30 @@ function updateObservationsTable(sectionID, observations, sno) {
           }
         }
 
-        // Handle Barcode (Section 2.0 specific)
-        if (sectionID === "2_0") {
-          const bcInput = row.querySelector("input[name='barcode_kavach_main_unit']");
+        // Handle Barcode & ATR (Section 2.0 specific)
+        if (sectionID === "2_0" || sectionID === "2.0") {
+          const bcInput = row.querySelector("input[name='barcode_kavach_main_unit'], td:nth-child(2) input[type='text'], input[placeholder*='Barcode']");
           if (bcInput) {
-            // Custom edited barcode logic
-            let rowId = sNo; // Fallback
-            // Try to guess match rowId used in static HTML? usually sNo
+            let rowId = sNo;
             if (window.editedBarcodes && window.editedBarcodes[rowId] !== undefined) {
               p.barcode_kavach_main_unit = window.editedBarcodes[rowId];
             }
-            bcInput.value = p.barcode_kavach_main_unit || '';
+            bcInput.value = p.barcode_kavach_main_unit || p.barcode || '';
             bcInput.setAttribute('data-initial', bcInput.value);
+          }
+          const atrInput = row.querySelector(".atr-serial-input");
+          const statusDiv = row.querySelector(".atr-status-msg");
+          const rowAtr = (p.atr_serial || p.barcode_kavach_main_unit || p.barcode || "").trim();
+          if (atrInput) {
+            atrInput.value = rowAtr;
+            atrInput.setAttribute('data-initial', rowAtr);
+          }
+          if (statusDiv) {
+            if (rowAtr && (p.observation_status === "Matching" || p.observation_status === "Manual")) {
+              statusDiv.innerHTML = `<span style="color: ${p.observation_status === 'Matching' ? '#27ae60' : '#e67e22'}; font-weight: bold;">✔ Matched (${rowAtr})</span>`;
+            } else {
+              statusDiv.innerHTML = "";
+            }
           }
         }
       }
@@ -9162,9 +10086,36 @@ oninput="
       sNoContent += ` <button type="button" onclick="deleteRowTemplate(this, '${S_no}', '${sectionID}')" style="background: none; border: none; cursor: pointer; font-size: 14px;" title="Delete Row">🗑️</button>`;
     }
 
+    let atrCellContent = "";
+    if (sectionID === "2_0" || sectionID === "2.0") {
+      let rowAtr = (observation.atr_serial || observation.barcode_kavach_main_unit || observation.barcode || "").trim();
+      let matchedStatusHtml = "";
+      if (rowAtr && (observation.observation_status === "Matching" || observation.observation_status === "Manual")) {
+        matchedStatusHtml = `<span style="color: ${observation.observation_status === 'Matching' ? '#27ae60' : '#e67e22'}; font-weight: bold;">✔ Matched (${rowAtr})</span>`;
+      }
+      atrCellContent = `
+        <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <input 
+              type="text" 
+              class="atr-serial-input" 
+              id="atr-input-${rowId}"
+              placeholder="ATR Serial No" 
+              style="width: 140px; padding: 5px; font-size: 14px;" 
+              value="${rowAtr}"
+              data-initial="${rowAtr}"
+              oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+            />
+          </div>
+          <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;">${matchedStatusHtml}</div>
+        </td>
+      `;
+    }
+
     row.innerHTML = `
       <td>${sNoContent}</td>
       <td class="observation_text">${observationContent}</td>
+      ${(sectionID === "2_0" || sectionID === "2.0") ? atrCellContent : ""}
       ${hasRequirement ? `<td class="requirement_text">${observation.requirement_text || "N/A"}</td>` : ""}
       <td>
         <select name="status-dropdown" class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
@@ -9598,15 +10549,20 @@ async function updateObservation(section, subsection, forceUpdate = false) {
     const observationStatus = statusDropdown?.value || "";
     const initialStatus = statusDropdown?.getAttribute('data-initial') || "";
 
-    const bcInput = row.querySelector("input[name='barcode_kavach_main_unit']");
+    const bcInput = row.querySelector("input[name='barcode_kavach_main_unit'], td:nth-child(2) input[type='text'], input[placeholder*='Barcode']");
     const barcodeValue = bcInput ? bcInput.value.trim().slice(-15) : "";
     const initialBarcode = bcInput ? bcInput.getAttribute('data-initial') || "" : "";
+
+    const atrInput = row.querySelector(".atr-serial-input");
+    const atrValue = atrInput ? atrInput.value.trim() : "";
+    const initialAtr = atrInput ? atrInput.getAttribute('data-initial') || "" : "";
 
     // Check if anything changed in this row
     let rowChanged = false;
     if (String(observationStatus).trim() !== String(initialStatus).trim()) rowChanged = true;
     if (String(remarks).trim() !== String(initialRemarks).trim()) rowChanged = true;
     if (String(barcodeValue).trim() !== String(initialBarcode).trim()) rowChanged = true;
+    if (String(atrValue).trim() !== String(initialAtr).trim()) rowChanged = true;
 
     console.log(`Row: ${S_no}`, {
       observationStatus,
@@ -9682,17 +10638,24 @@ async function updateObservation(section, subsection, forceUpdate = false) {
       ...uploadedPaths
     ];
 
-    observations.push({
+    const finalSerial = barcodeValue || atrValue;
+    const updItem = {
       S_no,
       row_key: row.getAttribute("data-key"),
       observation_text: observationText,
       requirement_text: requirementText,
-      barcode_kavach_main_unit: barcodeValue,
+      barcode_kavach_main_unit: finalSerial,
+      barcode: finalSerial,
+      atr_serial: atrValue || finalSerial,
       remarks,
       observation_status: observationStatus,
       image_paths: allImages,
       deleted_images: deletedPaths
-    });
+    };
+    if (section === "2_0" && finalSerial) {
+      hasChanges = true;
+    }
+    observations.push(updItem);
   }
 
   // 6) Abort if no modifications
@@ -10603,6 +11566,19 @@ function renderCustomRow(sectionId, s_no, description, templateId) {
                style="width: 180px; padding: 5px; font-size: 14px;" 
                oninput="toggleNotInstalledOption(this); markDataAsUnsaved();">
       </td>
+      <td class="atr-cell" style="padding: 5px 10px; vertical-align: middle;">
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input 
+            type="text" 
+            class="atr-serial-input" 
+            placeholder="ATR Serial No" 
+            style="width: 140px; padding: 5px; font-size: 14px;" 
+            title="ATR Serial Number"
+            oninput="if(typeof enableUpdateButton==='function') enableUpdateButton(); if(typeof markDataAsUnsaved==='function') markDataAsUnsaved();"
+          />
+        </div>
+        <div class="atr-status-msg" style="font-size: 11px; margin-top: 4px; min-height: 14px;"></div>
+      </td>
       <td>
         <select class="status-dropdown" onchange="highlightSelect(this); markDataAsUnsaved();" style="width: 180px; padding: 5px; font-size: 14px;">
           ${(function () {
@@ -10971,80 +11947,154 @@ async function checkForUpdates() {
 }
 
 // Automatically check for updates when internet connection is restored
-
-// Auto-load station details and observations when opening Edit Report from viewReports
-async function autoLoadReportDetailsIfUrlPresent() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const stationIdFromUrl = urlParams.get('station_id');
-  if (!stationIdFromUrl) return;
-
-  console.log("🔄 Auto-loading report details for Station ID:", stationIdFromUrl);
-
-  const stationIdInput = document.getElementById("station-id");
-  if (stationIdInput) stationIdInput.value = stationIdFromUrl;
-
-  try {
-    const formData = new FormData();
-    formData.append("station-id", stationIdFromUrl);
-
-    const resp = await fetch("generateReport", {
-      method: "POST",
-      body: formData
-    });
-    const res = await resp.json();
-
-    if (!res.success || !res.stationDetails) {
-      console.warn("Auto-load failed to find station details:", res.message);
-      return;
-    }
-
-    console.log("✅ Auto-loaded station details:", res.stationDetails);
-    populateStationDetails(res.stationDetails);
-
-    if (window.updateDivisionNames) window.updateDivisionNames();
-    if (window.updateSectionNames) window.updateSectionNames();
-
-    setTimeout(() => {
-      const divisionElem = document.getElementById("division");
-      if (divisionElem && res.stationDetails.division) {
-        divisionElem.value = res.stationDetails.division;
-      }
-      const sectionNameElem = document.getElementById("section-name");
-      if (sectionNameElem && res.stationDetails.section_name) {
-        sectionNameElem.value = res.stationDetails.section_name;
-      }
-    }, 100);
-
-    window.allObservations = res.observations || [];
-    let sectionWiseSno = {};
-    if (res.observations) {
-      res.observations.forEach((observation) => {
-        let sectionID = observation.section_id;
-        if (!sectionWiseSno[sectionID]) {
-          sectionWiseSno[sectionID] = [];
-        }
-        if (!sectionWiseSno[sectionID].includes(observation.S_no)) {
-          sectionWiseSno[sectionID].push(observation.S_no);
-        }
-      });
-    }
-    window.sectionWiseSno = sectionWiseSno;
-
-    const zone = res.stationDetails.railway_zone || "";
-    const division = res.stationDetails.division || "";
-    await checkAndHighlightSections(stationIdFromUrl, zone, division);
-
-    const saveBtn = document.getElementById('station-info-btn');
-    const getDetailsBtn = document.getElementById('get-details-btn');
-    if (saveBtn) saveBtn.style.display = 'none';
-    if (getDetailsBtn) getDetailsBtn.style.display = 'inline-block';
-
-    console.log("✅ All report details auto-populated without manual entry!");
-  } catch (e) {
-    console.error("Auto-load report details error:", e);
-  }
-}
-
+
+
+// Auto-load station details and observations when opening Edit Report from viewReports
+
+async function autoLoadReportDetailsIfUrlPresent() {
+
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const stationIdFromUrl = urlParams.get('station_id');
+
+  if (!stationIdFromUrl) return;
+
+
+
+  console.log("🔄 Auto-loading report details for Station ID:", stationIdFromUrl);
+
+
+
+  const stationIdInput = document.getElementById("station-id");
+
+  if (stationIdInput) stationIdInput.value = stationIdFromUrl;
+
+
+
+  try {
+
+    const formData = new FormData();
+
+    formData.append("station-id", stationIdFromUrl);
+
+
+
+    const resp = await fetch("generateReport", {
+
+      method: "POST",
+
+      body: formData
+
+    });
+
+    const res = await resp.json();
+
+
+
+    if (!res.success || !res.stationDetails) {
+
+      console.warn("Auto-load failed to find station details:", res.message);
+
+      return;
+
+    }
+
+
+
+    console.log("✅ Auto-loaded station details:", res.stationDetails);
+
+    populateStationDetails(res.stationDetails);
+
+
+
+    if (window.updateDivisionNames) window.updateDivisionNames();
+
+    if (window.updateSectionNames) window.updateSectionNames();
+
+
+
+    setTimeout(() => {
+
+      const divisionElem = document.getElementById("division");
+
+      if (divisionElem && res.stationDetails.division) {
+
+        divisionElem.value = res.stationDetails.division;
+
+      }
+
+      const sectionNameElem = document.getElementById("section-name");
+
+      if (sectionNameElem && res.stationDetails.section_name) {
+
+        sectionNameElem.value = res.stationDetails.section_name;
+
+      }
+
+    }, 100);
+
+
+
+    window.allObservations = res.observations || [];
+
+    let sectionWiseSno = {};
+
+    if (res.observations) {
+
+      res.observations.forEach((observation) => {
+
+        let sectionID = observation.section_id;
+
+        if (!sectionWiseSno[sectionID]) {
+
+          sectionWiseSno[sectionID] = [];
+
+        }
+
+        if (!sectionWiseSno[sectionID].includes(observation.S_no)) {
+
+          sectionWiseSno[sectionID].push(observation.S_no);
+
+        }
+
+      });
+
+    }
+
+    window.sectionWiseSno = sectionWiseSno;
+
+
+
+    const zone = res.stationDetails.railway_zone || "";
+
+    const division = res.stationDetails.division || "";
+
+    await checkAndHighlightSections(stationIdFromUrl, zone, division);
+
+
+
+    const saveBtn = document.getElementById('station-info-btn');
+
+    const getDetailsBtn = document.getElementById('get-details-btn');
+
+    if (saveBtn) saveBtn.style.display = 'none';
+
+    if (getDetailsBtn) getDetailsBtn.style.display = 'inline-block';
+
+
+
+    console.log("✅ All report details auto-populated without manual entry!");
+
+  } catch (e) {
+
+    console.error("Auto-load report details error:", e);
+
+  }
+
+}
+
+
+
 window.addEventListener('online', checkForUpdates);
 
 // Also check immediately when the page loads if already online
@@ -11054,3 +12104,278 @@ if (navigator.onLine) {
 
 
 window.addEventListener('load', function () { fetch('sync_structure').then(res => res.text()).then(data => console.log('Structure Sync:', data)); });
+
+
+// ============================================================================
+// ATR (Acceptance / Configuration Verification) Functions
+// ============================================================================
+
+// Function to fetch ATR details line by line from Configuration API / Offline Master
+async function fetchAtrSerial(btn) {
+  const tr = btn.closest("tr");
+  if (!tr) return;
+
+  const bcInput = tr.querySelector("input[name='barcode_kavach_main_unit'], td:nth-child(2) input[type='text'], input[placeholder*='Barcode']");
+  const atrInput = tr.querySelector(".atr-serial-input");
+  const statusDiv = tr.querySelector(".atr-status-msg");
+  const selectEl = tr.querySelector("select");
+  const remarksEl = tr.querySelector(".remarks textarea");
+
+  const scannedValue = (bcInput ? bcInput.value : "").trim();
+  const atrValue = (atrInput ? atrInput.value : "").trim();
+  const partNoToQuery = scannedValue || atrValue;
+
+  if (!partNoToQuery) {
+    if (statusDiv) {
+      statusDiv.innerHTML = '<span style="color: #dc3545; font-weight: 600;">⚠️ Scan barcode or enter serial first</span>';
+    }
+    if (bcInput) bcInput.focus();
+    return;
+  }
+
+  const originalBtnText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "⏳...";
+  if (statusDiv) {
+    statusDiv.innerHTML = '<span style="color: #007bff;">Fetching ATR data...</span>';
+  }
+
+  try {
+    const response = await fetch(`/api/part-details?partNo=${encodeURIComponent(partNoToQuery)}`, {
+      cache: "no-store"
+    });
+    const result = await response.json();
+
+    if (response.ok && result && (result.status === true || (result.data && result.data.matched === true))) {
+      const data = result.data || {};
+      const fetchedSerial = (data.partNo ? String(data.partNo).trim() : partNoToQuery);
+      const partName = data.name || data.description || "";
+
+      if (atrInput) {
+        atrInput.value = fetchedSerial;
+        atrInput.style.backgroundColor = "#e8f8f5";
+        atrInput.style.borderColor = "#2ecc71";
+      }
+
+      const isMatch = scannedValue 
+        ? (scannedValue.toLowerCase() === fetchedSerial.toLowerCase() || data.matched === true)
+        : (data.matched === true);
+
+      if (isMatch) {
+        if (selectEl) {
+          selectEl.value = "Matching";
+          if (typeof highlightSelect === "function") highlightSelect(selectEl);
+        }
+        if (statusDiv) {
+          statusDiv.innerHTML = `<span style="color: #27ae60; font-weight: bold;">✔ Matched ${partName ? '(' + partName + ')' : ''}</span>`;
+        }
+      } else {
+        if (selectEl) {
+          if ([...selectEl.options].some(o => o.value === "Manual")) {
+            selectEl.value = "Manual";
+          } else {
+            selectEl.value = "Not Matching";
+          }
+          if (typeof highlightSelect === "function") highlightSelect(selectEl);
+        }
+        if (statusDiv) {
+          statusDiv.innerHTML = '<span style="color: #e67e22; font-weight: bold;">✖ Mismatch &rarr; Set to Manual</span>';
+        }
+      }
+    } else {
+      if (selectEl) {
+        if ([...selectEl.options].some(o => o.value === "Manual")) {
+          selectEl.value = "Manual";
+        } else {
+          selectEl.value = "Not Matching";
+        }
+        if (typeof highlightSelect === "function") highlightSelect(selectEl);
+      }
+      const errorMsg = (result && result.message) ? result.message : "Not Found";
+      if (statusDiv) {
+        statusDiv.innerHTML = `<span style="color: #e67e22; font-weight: bold;">✖ ${errorMsg} &rarr; Set to Manual</span>`;
+      }
+      if (remarksEl && !remarksEl.value.trim()) {
+        remarksEl.placeholder = "Manual verification remarks...";
+      }
+    }
+  } catch (err) {
+    console.error("Fetch ATR error:", err);
+    if (selectEl) {
+      if ([...selectEl.options].some(o => o.value === "Manual")) {
+        selectEl.value = "Manual";
+      } else {
+        selectEl.value = "Not Matching";
+      }
+      if (typeof highlightSelect === "function") highlightSelect(selectEl);
+    }
+    if (statusDiv) {
+      statusDiv.innerHTML = '<span style="color: #dc3545; font-weight: bold;">⚠️ Error connecting to server &rarr; Manual</span>';
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalBtnText;
+    if (typeof enableUpdateButton === "function") enableUpdateButton();
+    if (typeof markDataAsUnsaved === "function") markDataAsUnsaved();
+  }
+}
+
+// Function to fetch and verify ATR details for all equipment items in Section 2.0 at once
+async function fetchUnitAtr(callerBtn) {
+  const table = document.querySelector("#observations-section-2_0") || 
+                document.querySelector("table.observations");
+  if (!table) {
+    alert("Section 2.0 table not found.");
+    return;
+  }
+
+  const rows = table.querySelectorAll("tbody tr");
+  if (!rows || rows.length === 0) {
+    alert("No equipment rows found to verify.");
+    return;
+  }
+
+  const itemsToFetch = [];
+  rows.forEach((tr) => {
+    const bcInput = tr.querySelector("input[name='barcode_kavach_main_unit'], td:nth-child(2) input[type='text'], input[placeholder*='Barcode']");
+    const atrInput = tr.querySelector(".atr-serial-input");
+    const statusDiv = tr.querySelector(".atr-status-msg");
+    const selectEl = tr.querySelector("select");
+    const remarksEl = tr.querySelector(".remarks textarea");
+
+    const scannedValue = (bcInput ? bcInput.value : "").trim();
+    const atrValue = (atrInput ? atrInput.value : "").trim();
+    const partNo = scannedValue || atrValue;
+
+    if (partNo) {
+      itemsToFetch.push({
+        tr,
+        bcInput,
+        atrInput,
+        statusDiv,
+        selectEl,
+        remarksEl,
+        scannedValue,
+        partNo
+      });
+    }
+  });
+
+  if (itemsToFetch.length === 0) {
+    alert("Please scan or enter at least one equipment barcode or serial number first.");
+    return;
+  }
+
+  const allBtns = document.querySelectorAll("#fetch-unit-atr-btn, #fetch-unit-atr-btn-sec");
+  allBtns.forEach(b => {
+    b.disabled = true;
+    b.dataset.origText = b.textContent;
+    b.textContent = "⏳ Fetching...";
+  });
+
+  let matchedCount = 0;
+  let manualCount = 0;
+
+  const promises = itemsToFetch.map(async (item) => {
+    const { tr, bcInput, atrInput, statusDiv, selectEl, remarksEl, scannedValue, partNo } = item;
+    if (statusDiv) {
+      statusDiv.innerHTML = '<span style="color: #007bff;">Fetching ATR...</span>';
+    }
+
+    try {
+      const response = await fetch(`/api/part-details?partNo=${encodeURIComponent(partNo)}`, {
+        cache: "no-store"
+      });
+      let result = null;
+      try {
+        result = await response.json();
+      } catch (jsonErr) {
+        console.warn("JSON parse error:", jsonErr);
+      }
+
+      if (response.ok && result && (result.status === true || (result.data && result.data.matched === true))) {
+        const data = result.data || {};
+        const fetchedSerial = (data.partNo ? String(data.partNo).trim() : partNo);
+        const partName = data.name || data.description || "";
+
+        if (atrInput) {
+          atrInput.value = fetchedSerial;
+          atrInput.dataset.initialValue = fetchedSerial;
+          atrInput.setAttribute('data-initial', fetchedSerial);
+          atrInput.style.backgroundColor = "#e8f8f5";
+          atrInput.style.borderColor = "#2ecc71";
+        }
+        if (bcInput && !bcInput.value.trim()) {
+          bcInput.value = fetchedSerial;
+          bcInput.dataset.initialValue = fetchedSerial;
+          bcInput.setAttribute('data-initial', fetchedSerial);
+        }
+        if (typeof updateEditedBarcode === 'function' && tr.id) {
+          updateEditedBarcode(tr.id.replace('row-', ''), fetchedSerial);
+        }
+
+        const isMatch = scannedValue 
+          ? (scannedValue.toLowerCase() === fetchedSerial.toLowerCase() || data.matched === true)
+          : (data.matched === true);
+
+        if (isMatch) {
+          matchedCount++;
+          if (selectEl) {
+            selectEl.value = "Matching";
+            if (typeof highlightSelect === "function") highlightSelect(selectEl);
+          }
+          if (statusDiv) {
+            statusDiv.innerHTML = `<span style="color: #27ae60; font-weight: bold;">✔ Matched ${partName ? '(' + partName + ')' : ''}</span>`;
+          }
+        } else {
+          manualCount++;
+          if (selectEl) {
+            selectEl.value = [...selectEl.options].some(o => o.value === "Manual") ? "Manual" : "Not Matching";
+            if (typeof highlightSelect === "function") highlightSelect(selectEl);
+          }
+          if (statusDiv) {
+            statusDiv.innerHTML = '<span style="color: #e67e22; font-weight: bold;">✖ Mismatch &rarr; Set to Manual</span>';
+          }
+        }
+      } else {
+        manualCount++;
+        if (selectEl) {
+          selectEl.value = [...selectEl.options].some(o => o.value === "Manual") ? "Manual" : "Not Matching";
+          if (typeof highlightSelect === "function") highlightSelect(selectEl);
+        }
+        const errorMsg = (result && result.message) ? result.message : "Not Found";
+        if (statusDiv) {
+          statusDiv.innerHTML = `<span style="color: #e67e22; font-weight: bold;">✖ ${errorMsg} &rarr; Set to Manual</span>`;
+        }
+        if (remarksEl && !remarksEl.value.trim()) {
+          remarksEl.placeholder = "Manual verification remarks...";
+        }
+      }
+    } catch (err) {
+      console.error("Fetch unit ATR error:", err);
+      manualCount++;
+      if (selectEl) {
+        selectEl.value = [...selectEl.options].some(o => o.value === "Manual") ? "Manual" : "Not Matching";
+        if (typeof highlightSelect === "function") highlightSelect(selectEl);
+      }
+      if (statusDiv) {
+        statusDiv.innerHTML = `<span style="color: #dc3545; font-weight: bold;">⚠️ Verification error (${err.message || 'Failed to fetch'}) &rarr; Manual</span>`;
+      }
+    }
+  });
+
+  await Promise.all(promises);
+
+  allBtns.forEach(b => {
+    b.disabled = false;
+    b.textContent = b.dataset.origText || "Fetch";
+  });
+
+  if (typeof enableUpdateButton === "function") enableUpdateButton();
+  if (typeof markDataAsUnsaved === "function") markDataAsUnsaved();
+  if (typeof unsavedChanges !== "undefined") unsavedChanges = true;
+
+  alert(`Unit ATR Verification Complete:
+✔ ${matchedCount} Matched
+✖ ${manualCount} Set to Manual`);
+}

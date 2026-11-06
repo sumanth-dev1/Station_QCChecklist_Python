@@ -46,10 +46,18 @@ def fetch_observations():
                 images_map[ent][s_no] = []
             images_map[ent][s_no].append(img['image_path'])
 
+        has_atr_col = False
+        try:
+            cursor.execute("SHOW COLUMNS FROM verification_of_equipment_serial_numbers LIKE 'atr_serial'")
+            has_atr_col = bool(cursor.fetchone())
+        except Exception:
+            has_atr_col = False
+        atr_col_expr = ", atr_serial" if has_atr_col else ", NULL as atr_serial"
+
         observations = []
         for table in TABLE_NAMES:
             if table == "verification_of_equipment_serial_numbers":
-                sql = f"SELECT S_no, observation_text, requirement_text, observation_status, remarks, created_at, updated_at, barcode_kavach_main_unit FROM {table} WHERE station_id = %s"
+                sql = f"SELECT S_no, observation_text, requirement_text, observation_status, remarks, created_at, updated_at, barcode_kavach_main_unit {atr_col_expr} FROM {table} WHERE station_id = %s"
             else:
                 sql = f"SELECT S_no, observation_text, requirement_text, observation_status, remarks, created_at, updated_at FROM {table} WHERE station_id = %s"
 
@@ -59,6 +67,8 @@ def fetch_observations():
                 for row in rows:
                     sno = row['S_no']
                     image_paths = images_map.get(table, {}).get(sno, [])
+                    row_bc = row.get('barcode_kavach_main_unit')
+                    row_atr = row.get('atr_serial') or row_bc
                     observations.append({
                         'S_no': row['S_no'],
                         'observation_text': row['observation_text'] or '',
@@ -66,7 +76,9 @@ def fetch_observations():
                         'observation_status': row['observation_status'] or '',
                         'remarks': row['remarks'] or '',
                         'image_paths': image_paths,
-                        'barcode_kavach_main_unit': row.get('barcode_kavach_main_unit'),
+                        'barcode_kavach_main_unit': row_bc,
+                        'barcode': row_bc,
+                        'atr_serial': row_atr,
                         'created_at': str(row['created_at']) if row.get('created_at') else None,
                         'updated_at': str(row['updated_at']) if row.get('updated_at') else None
                     })

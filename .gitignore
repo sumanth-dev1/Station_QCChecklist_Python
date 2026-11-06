@@ -21,6 +21,9 @@ server_err.log
 # Scratch & temporary test scripts
 scratch/
 
+# Extracted equipment master (compressed .gz is preserved)
+database/equipment_master.db
+
 # User uploads and generated inspection reports (prevents leaking inspection data to GitHub)
 uploads/*
 !uploads/.gitkeep

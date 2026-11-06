@@ -67,6 +67,7 @@ from routes.generateSummaryReport import generateSummaryReport_bp
 
 from routes.wfms_proxy import wfms_proxy_bp
 from routes.upload_to_wfms import upload_to_wfms_bp
+from routes.part_details import part_details_bp
 
 blueprints = [
     connect_bp, login_bp, create_user_bp, edit_user_bp, view_users_bp, verify_admin_bp,
@@ -78,7 +79,7 @@ blueprints = [
     upload_bp, deleteImage_bp, manage_row_templates_bp, sync_structure_bp,
     generateReport_bp, uploadReport_bp, viewReports_bp, getReportById_bp, getReportDetails_bp,
     getNextVersion_bp, fetchReports_bp, update_version_bp, generateSummaryReport_bp,
-    wfms_proxy_bp, upload_to_wfms_bp
+    wfms_proxy_bp, upload_to_wfms_bp, part_details_bp
 ]
 
 for bp in blueprints:

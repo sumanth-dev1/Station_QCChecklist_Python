@@ -781,6 +781,7 @@ CREATE TABLE `verification_of_equipment_serial_numbers` (
   `station_id` int(11) DEFAULT NULL,
   `S_no` varchar(255) NOT NULL,
   `barcode_kavach_main_unit` varchar(255) DEFAULT NULL,
+  `atr_serial` varchar(255) DEFAULT NULL,
   `observation_text` text NOT NULL,
   `requirement_text` text DEFAULT NULL,
   `remarks` text NOT NULL,

@@ -30,11 +30,23 @@ def update():
         except Exception:
             has_row_key = False
 
+        has_atr = False
+        try:
+            cursor.execute("SHOW COLUMNS FROM verification_of_equipment_serial_numbers LIKE 'atr_serial'")
+            if cursor.fetchone():
+                has_atr = True
+            else:
+                cursor.execute("ALTER TABLE verification_of_equipment_serial_numbers ADD COLUMN atr_serial VARCHAR(255) NULL")
+                has_atr = True
+        except Exception:
+            has_atr = False
+
         for row in rows:
             row_key = (row.get('row_key') or '').strip()
             sno = (row.get('sno') or row.get('S_no') or '').strip()
-            barcode = (row.get('barcode') or '').strip()
-            status = (row.get('status') or '').strip()
+            barcode = (row.get('barcode') or row.get('barcode_kavach_main_unit') or '').strip()
+            atr_serial = (row.get('atr_serial') or barcode).strip()
+            status = (row.get('status') or row.get('observation_status') or '').strip()
             remarks = (row.get('remarks') or '').strip()
             obs_text = (row.get('observation_text') or '').strip()
 
@@ -52,36 +64,70 @@ def update():
 
             if existing:
                 if has_row_key and row_key:
-                    update_sql = """
-                        UPDATE verification_of_equipment_serial_numbers SET 
-                        S_no = %s, barcode_kavach_main_unit = %s, observation_status = %s, 
-                        remarks = %s, observation_text = %s, row_key = %s, updated_at = NOW() 
-                        WHERE station_id = %s AND (row_key = %s OR (S_no = %s AND (row_key IS NULL OR row_key = '')))
-                    """
-                    cursor.execute(update_sql, (sno, barcode, status, remarks, obs_text, row_key, station_id, row_key, sno))
+                    if has_atr:
+                        update_sql = """
+                            UPDATE verification_of_equipment_serial_numbers SET 
+                            S_no = %s, barcode_kavach_main_unit = %s, atr_serial = %s, observation_status = %s, 
+                            remarks = %s, observation_text = %s, row_key = %s, updated_at = NOW() 
+                            WHERE station_id = %s AND (row_key = %s OR (S_no = %s AND (row_key IS NULL OR row_key = '')))
+                        """
+                        cursor.execute(update_sql, (sno, barcode, atr_serial, status, remarks, obs_text, row_key, station_id, row_key, sno))
+                    else:
+                        update_sql = """
+                            UPDATE verification_of_equipment_serial_numbers SET 
+                            S_no = %s, barcode_kavach_main_unit = %s, observation_status = %s, 
+                            remarks = %s, observation_text = %s, row_key = %s, updated_at = NOW() 
+                            WHERE station_id = %s AND (row_key = %s OR (S_no = %s AND (row_key IS NULL OR row_key = '')))
+                        """
+                        cursor.execute(update_sql, (sno, barcode, status, remarks, obs_text, row_key, station_id, row_key, sno))
                 else:
-                    update_sql = """
-                        UPDATE verification_of_equipment_serial_numbers SET 
-                        barcode_kavach_main_unit = %s, observation_status = %s, 
-                        remarks = %s, observation_text = %s, updated_at = NOW() 
-                        WHERE station_id = %s AND S_no = %s
-                    """
-                    cursor.execute(update_sql, (barcode, status, remarks, obs_text, station_id, sno))
+                    if has_atr:
+                        update_sql = """
+                            UPDATE verification_of_equipment_serial_numbers SET 
+                            barcode_kavach_main_unit = %s, atr_serial = %s, observation_status = %s, 
+                            remarks = %s, observation_text = %s, updated_at = NOW() 
+                            WHERE station_id = %s AND S_no = %s
+                        """
+                        cursor.execute(update_sql, (barcode, atr_serial, status, remarks, obs_text, station_id, sno))
+                    else:
+                        update_sql = """
+                            UPDATE verification_of_equipment_serial_numbers SET 
+                            barcode_kavach_main_unit = %s, observation_status = %s, 
+                            remarks = %s, observation_text = %s, updated_at = NOW() 
+                            WHERE station_id = %s AND S_no = %s
+                        """
+                        cursor.execute(update_sql, (barcode, status, remarks, obs_text, station_id, sno))
             else:
                 if has_row_key and row_key:
-                    insert_sql = """
-                        INSERT INTO verification_of_equipment_serial_numbers 
-                        (station_id, row_key, S_no, barcode_kavach_main_unit, observation_status, remarks, observation_text, created_at, updated_at) 
-                        VALUES (%s, %s, %s, %s, %s, %s, %s, NOW(), NOW())
-                    """
-                    cursor.execute(insert_sql, (station_id, row_key, sno, barcode, status, remarks, obs_text))
+                    if has_atr:
+                        insert_sql = """
+                            INSERT INTO verification_of_equipment_serial_numbers 
+                            (station_id, row_key, S_no, barcode_kavach_main_unit, atr_serial, observation_status, remarks, observation_text, created_at, updated_at) 
+                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, NOW(), NOW())
+                        """
+                        cursor.execute(insert_sql, (station_id, row_key, sno, barcode, atr_serial, status, remarks, obs_text))
+                    else:
+                        insert_sql = """
+                            INSERT INTO verification_of_equipment_serial_numbers 
+                            (station_id, row_key, S_no, barcode_kavach_main_unit, observation_status, remarks, observation_text, created_at, updated_at) 
+                            VALUES (%s, %s, %s, %s, %s, %s, %s, NOW(), NOW())
+                        """
+                        cursor.execute(insert_sql, (station_id, row_key, sno, barcode, status, remarks, obs_text))
                 else:
-                    insert_sql = """
-                        INSERT INTO verification_of_equipment_serial_numbers 
-                        (station_id, S_no, barcode_kavach_main_unit, observation_status, remarks, observation_text, created_at, updated_at) 
-                        VALUES (%s, %s, %s, %s, %s, %s, NOW(), NOW())
-                    """
-                    cursor.execute(insert_sql, (station_id, sno, barcode, status, remarks, obs_text))
+                    if has_atr:
+                        insert_sql = """
+                            INSERT INTO verification_of_equipment_serial_numbers 
+                            (station_id, S_no, barcode_kavach_main_unit, atr_serial, observation_status, remarks, observation_text, created_at, updated_at) 
+                            VALUES (%s, %s, %s, %s, %s, %s, %s, NOW(), NOW())
+                        """
+                        cursor.execute(insert_sql, (station_id, sno, barcode, atr_serial, status, remarks, obs_text))
+                    else:
+                        insert_sql = """
+                            INSERT INTO verification_of_equipment_serial_numbers 
+                            (station_id, S_no, barcode_kavach_main_unit, observation_status, remarks, observation_text, created_at, updated_at) 
+                            VALUES (%s, %s, %s, %s, %s, %s, NOW(), NOW())
+                        """
+                        cursor.execute(insert_sql, (station_id, sno, barcode, status, remarks, obs_text))
 
         cursor.execute("UPDATE station SET updated_date = NOW() WHERE station_id = %s", (station_id,))
         cursor.close()
